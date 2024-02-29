@@ -1,0 +1,12 @@
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm header">
+  <h5 class="my-0 mr-md-auto font-weight-normal">AM Soft - Prueba ingreso</h5>
+  <nav class="my-2 my-md-0 align-right">
+    <button class="btn btn-outline-secondary" (click)="redirect('product-types')" *ngIf="checkIfSignedIn()">Tipos de Producto</button>
+    <button class="btn btn-outline-secondary" (click)="redirect('products')" *ngIf="checkIfSignedIn()">Productos</button>
+    <button class="btn btn-outline-secondary" (click)="redirect('profile')" *ngIf="checkIfSignedIn()">Perfil de Usuario</button>
+    <button class="btn btn-outline-secondary" (click)="redirect('login')" *ngIf="!checkIfSignedIn()">Iniciar Sesión</button>
+    <button class="btn btn-outline-secondary" (click)="redirect('register')" *ngIf="!checkIfSignedIn()">Registrarse</button>
+    <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="checkIfSignedIn()">Cerrar Sesión</button>
+  </nav>
+</header>
+<router-outlet></router-outlet>

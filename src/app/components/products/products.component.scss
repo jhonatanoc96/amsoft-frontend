@@ -1,0 +1,49 @@
+.bg-image {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/007/278/153/large_2x/abstract-sciencece-or-technology-with-neon-light-and-empty-space-for-text-futuristic-background-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 60px);
+}
+
+.table-products{
+    margin: 3% 0 5%;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.form-products{
+    margin: 3% 4% 5%;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 60px;
+}
+
+.form-products {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-group.row {
+    margin-bottom: 15px;
+}
+
+.form-group.row label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.form-group.row .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}

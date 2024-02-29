@@ -1,0 +1,41 @@
+body {
+    background-color: #f4f4f4;
+}
+
+.inner-main {
+    max-width: 500px;
+    margin: auto;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card-header {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-body {
+    background-color: #fff;
+    color: #333;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.bg-image {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/007/278/153/large_2x/abstract-sciencece-or-technology-with-neon-light-and-empty-space-for-text-futuristic-background-vector.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.form {
+    opacity: 0.9;
+}

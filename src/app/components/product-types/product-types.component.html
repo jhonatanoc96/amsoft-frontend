@@ -1,0 +1,57 @@
+<div class="bg-image d-flex justify-content-center align-items-center">
+    <div class="card border-0 table-product-type shadow-lg">
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0 d-flex justify-content-between">
+                Tipos de producto
+                <button type="button" class="btn btn-light" (click)="changeForm()">
+                    {{(showForm || showFormEdit) ? 'Ocultar' : 'Nuevo'}}
+                </button>
+            </h3>
+        </div>
+        <input type="text" (input)="searchProductTypes($event)" class="form-control search-bar" placeholder="Buscar...">
+        <form *ngIf="showForm || showFormEdit" class="form-product-types">
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Tipo</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="type" [(ngModel)]="newProductType.type" name="type">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 offset-sm-2 text-right">
+                    <br>
+                    <button [disabled]="!newProductType.type"
+                        (click)="!showFormEdit ? createProductType() : updateProductType()"
+                        class="btn btn-dark">{{!showFormEdit ? 'Crear' : 'Guardar'}}</button>
+                </div>
+            </div>
+        </form>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Fecha de creación</th>
+                        <th>Fecha de modificación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let productType of productTypes">
+                        <td>{{ productType.type }}</td>
+                        <td>{{ productType.created_at | date:'short'}}</td>
+                        <td>{{ productType.updated_at | date:'short'}}</td>
+                        <td>
+                            <button class="btn btn-dark" (click)="changeFormEdit(productType)"
+                                *ngIf="productType.id !== newProductType.id">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" (click)="deleteProductType(productType.id)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

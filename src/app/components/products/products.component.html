@@ -1,0 +1,78 @@
+<div class="bg-image d-flex justify-content-center align-items-center">
+    <div class="card border-0 table-products shadow-lg">
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0 d-flex justify-content-between">
+                Listado de productos
+                <button type="button" class="btn btn-light" (click)="changeForm()">
+                    {{(showForm || showFormEdit) ? 'Ocultar' : 'Nuevo'}}
+                </button>
+            </h3>
+        </div>
+        <input type="text" (input)="searchProducts($event)" class="form-control search-bar" placeholder="Buscar...">
+        <form *ngIf="showForm || showFormEdit" class="form-products">
+            <div class="form-group row">
+                <label for="productType" class="col-sm-2 col-form-label">Tipo de producto</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="productType" [(ngModel)]="newProduct.product_type_id"
+                        name="product_type_id">
+                        <option *ngFor="let productType of productTypes" [value]="productType.id">{{ productType.type }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" [(ngModel)]="newProduct.name" name="name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="description" class="col-sm-2 col-form-label">Descripción</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="description" [(ngModel)]="newProduct.description"
+                        name="description">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 offset-sm-2 text-right">
+                    <br>
+                    <button [disabled]="!newProduct.product_type_id || !newProduct.name || !newProduct.description"
+                        (click)="!showFormEdit ? createProduct() : updateProduct()"
+                        class="btn btn-dark">{{!showFormEdit ? 'Crear' : 'Guardar'}}</button>
+                </div>
+            </div>
+        </form>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tipo de producto</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Fecha de creación</th>
+                        <th>Fecha de modificación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{ product.product_type.type }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.created_at | date:'short' }}</td>
+                        <td>{{ product.updated_at | date:'short' }}</td>
+                        <td>
+                            <button class="btn btn-dark" (click)="changeFormEdit(product)"
+                                *ngIf="product.id !== newProduct.id">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" (click)="deleteProduct(product.id)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

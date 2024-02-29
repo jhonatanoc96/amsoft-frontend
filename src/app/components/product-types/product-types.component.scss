@@ -3,6 +3,7 @@
     background-size: cover;
     background-position: center;
     min-height: calc(100vh - 60px);
+    box-shadow: inset 0px 0px 2px black, inset 0px 0px 5px black, inset 0px 0px 15px black;
 }
 
 .table-product-types{
@@ -38,4 +39,13 @@
 .form-group.row .form-control {
     border: 1px solid #ced4da;
     border-radius: 4px;
+}
+
+.div-search{
+    margin: 1% 4%;
+}
+
+.card-header{
+    box-shadow: inset 0px 0px 15px black;
+
 }

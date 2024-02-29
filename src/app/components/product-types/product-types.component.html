@@ -8,7 +8,9 @@
                 </button>
             </h3>
         </div>
-        <input type="text" (input)="searchProductTypes($event)" class="form-control search-bar" placeholder="Buscar...">
+        <div class="div-search">
+            <input type="text" (input)="searchProductTypes($event)" class="form-control search-bar" placeholder="Buscar...">
+        </div>
         <form *ngIf="showForm || showFormEdit" class="form-product-types">
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Tipo</label>
@@ -38,8 +40,8 @@
                 <tbody>
                     <tr *ngFor="let productType of productTypes">
                         <td>{{ productType.type }}</td>
-                        <td>{{ productType.created_at | date:'short'}}</td>
-                        <td>{{ productType.updated_at | date:'short'}}</td>
+                        <td>{{ productType.created_at | date:'dd/MM/yy h:mm a'}}</td>
+                        <td>{{ productType.updated_at | date:'dd/MM/yy h:mm a'}}</td>
                         <td>
                             <button class="btn btn-dark" (click)="changeFormEdit(productType)"
                                 *ngIf="productType.id !== newProductType.id">

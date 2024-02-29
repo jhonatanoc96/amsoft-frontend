@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypeService } from '../../shared/product-type.service';
 import { CommonModule } from '@angular/common';
-import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-product-types',
@@ -108,5 +109,12 @@ export class ProductTypesComponent implements OnInit {
 
     this.productTypes = this.productTypes.filter(productType =>
       productType.type.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  exportToExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('productTypes'));
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'product-types.xlsx');
   }
 }
